@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+vite.config.ts
+vitest.config.ts
+tsconfig.json
+package.json
+yarn.lock
+tsconfig.node.json
