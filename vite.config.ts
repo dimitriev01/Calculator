@@ -14,6 +14,11 @@ const config: UserConfig = {
   plugins: [react()],
   resolve: {
     alias,
+  }, 
+  css: {
+    modules: {
+      generateScopedName: '[local]_[hash:base64:2]',
+    },
   },
 };
 
