@@ -56,7 +56,7 @@ export const useCalculation = () => {
           const operator = operators.pop();
           const operand2 = parseFloat(stack.pop() as string);
           const operand1 = parseFloat(stack.pop() as string);
-          stack.push(performOperation(operator, operand1, operand2));
+          stack.push(performOperation(operator ? operator : '', operand1, operand2));
         }
         operators.push(token);
       } else {
@@ -70,7 +70,7 @@ export const useCalculation = () => {
       const operator = operators.pop();
       const operand2 = parseFloat(stack.pop() as string);
       const operand1 = parseFloat(stack.pop() as string);
-      stack.push(performOperation(operator, operand1, operand2));
+      stack.push(performOperation(operator ? operator : '', operand1, operand2));
     }
 
     return (stack[0] as number).toFixed(2);
