@@ -10,10 +10,14 @@ export const Calculator = () => {
   return (
     <section className={cls.calculator}>
       <div className={cls.calculator__content}>
-        <CalculationsPanel expression={expression} />
-        <ResultPanel result={result} />
-        <div className={cls.calculator__content__line} />
-        <ButtonsPanel handleButton={handleButton} />
+        <div className={cls.calculator__content__container}>
+          <div>
+            <CalculationsPanel expression={expression} />
+            <ResultPanel result={result} />
+            <div className={cls.calculator__content__container__line} />
+          </div>
+          <ButtonsPanel handleButton={handleButton} />
+        </div>
       </div>
     </section>
   );

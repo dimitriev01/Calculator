@@ -6,7 +6,7 @@
   height: 100vh;
   background: linear-gradient(to bottom, #ffa1a1 0%, #ff7b7b 100%);
 
-  @media (max-width: 425px) {
-    padding: 1.25rem;
+  @media (max-width: 600px) {
+    padding: 0;
   }
 }

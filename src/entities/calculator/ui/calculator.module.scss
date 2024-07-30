@@ -16,10 +16,28 @@
     padding: 2.75rem 3rem 2.75rem 2.875rem;
     margin: 2.375rem 1.9375rem;
 
-    &__line {
-      border: 0.125rem solid #fff;
-      opacity: 0.35;
-      margin: 1.125rem 0 2.3125rem;
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
+      &__line {
+        border: 0.125rem solid #fff;
+        opacity: 0.35;
+        margin: 1.125rem 0 2.3125rem;
+      }
     }
+
+    @media (max-width: 600px) {
+      margin: 0;
+      padding: 1.25rem 1.875rem;
+      border-radius: 0;
+      background-color: #fff;
+    }
+  }
+
+  @media (max-width: 600px) {
+    max-height: 100vh;
   }
 }

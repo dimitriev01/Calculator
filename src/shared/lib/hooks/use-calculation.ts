@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import { EnumButton } from 'features/buttons-panel';
+import { EnumButton, EnumButtonKeyboard } from 'features/buttons-panel';
 import { useEffect, useState } from 'react';
 
 export const useCalculation = () => {
@@ -109,23 +109,30 @@ export const useCalculation = () => {
         calculateResult();
       } else if (key === 'Backspace') {
         setExpression(expression.slice(0, -1));
-      } else if (!isNaN(parseInt(key)) || key === EnumButton.DECIMAL_CLONE || key === EnumButton.DECIMAL) {
+      } else if (key === 'Escape') {
+        setExpression('');
+        setResult('0');
+      } else if (
+        !isNaN(parseInt(key)) ||
+        key === EnumButtonKeyboard.DECIMAL_CLONE ||
+        key === EnumButtonKeyboard.DECIMAL
+      ) {
         setExpression(expression + key);
-      } else if (key in EnumButton) {
-        handleButton(EnumButton[key as keyof typeof EnumButton]);
+      } else if (key in EnumButtonKeyboard) {
+        handleButton(EnumButtonKeyboard[key as keyof typeof EnumButtonKeyboard]);
       } else {
         switch (key) {
-          case EnumButton.MULTIPLY:
-            handleButton(EnumButton.MULTIPLY);
+          case EnumButtonKeyboard.MULTIPLY:
+            handleButton(EnumButtonKeyboard.MULTIPLY);
             break;
-          case EnumButton.DIVIDE:
-            handleButton(EnumButton.DIVIDE);
+          case EnumButtonKeyboard.DIVIDE:
+            handleButton(EnumButtonKeyboard.DIVIDE);
             break;
-          case EnumButton.ADD:
-            handleButton(EnumButton.ADD);
+          case EnumButtonKeyboard.ADD:
+            handleButton(EnumButtonKeyboard.ADD);
             break;
-          case EnumButton.SUBTRACT:
-            handleButton(EnumButton.SUBTRACT);
+          case EnumButtonKeyboard.SUBTRACT:
+            handleButton(EnumButtonKeyboard.SUBTRACT);
             break;
           default:
             break;

@@ -1,8 +1,30 @@
 export enum EnumButton {
-  BACKSPACE = 'Backspace',
+  BACKSPACE = '⌫',
   CLEAR = 'C',
   SQUARE_ROOT = '√',
   PERCENT = '%',
+  DIVIDE = '/',
+  SEVEN = '7',
+  EIGHT = '8',
+  NINE = '9',
+  MULTIPLY = '×',
+  FOUR = '4',
+  FIVE = '5',
+  SIX = '6',
+  SUBTRACT = '-',
+  ONE = '1',
+  TWO = '2',
+  THREE = '3',
+  ADD = '+',
+  ZERO = '0',
+  COUPLE_ZERO = '00',
+  DECIMAL = ',',
+  EQUALS = '=',
+}
+
+export enum EnumButtonKeyboard {
+  BACKSPACE = 'Backspace',
+  CLEAR = 'Escape',
   DIVIDE = '/',
   SEVEN = '7',
   EIGHT = '8',
@@ -17,10 +39,10 @@ export enum EnumButton {
   THREE = '3',
   ADD = '+',
   ZERO = '0',
-  COUPLE_ZERO = '00',
   DECIMAL = ',',
   DECIMAL_CLONE = '.',
-  EQUALS = '=',
+  EQUALS_CLONE = '=',
+  EQUALS = 'Enter',
 }
 
 export const calcButtons = [
