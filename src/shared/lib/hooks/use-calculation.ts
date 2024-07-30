@@ -53,7 +53,7 @@ export const useCalculation = () => {
 
       if (token in precedence) {
         while (operators.length > 0 && precedence[operators[operators.length - 1]] >= precedence[token]) {
-          const operator = operators.pop();
+          const operator = operators.pop() ?? '';
           const operand2 = parseFloat(stack.pop() as string);
           const operand1 = parseFloat(stack.pop() as string);
           stack.push(performOperation(operator, operand1, operand2));
@@ -67,7 +67,7 @@ export const useCalculation = () => {
     }
 
     while (operators.length > 0) {
-      const operator = operators.pop();
+      const operator = operators.pop() ?? '';
       const operand2 = parseFloat(stack.pop() as string);
       const operand1 = parseFloat(stack.pop() as string);
       stack.push(performOperation(operator, operand1, operand2));
@@ -77,7 +77,7 @@ export const useCalculation = () => {
   };
 
   const calculateResult = () => {
-    if (expression.length !== 0) {
+    if (expression.length) {
       try {
         setResult(evaluateExpression(expression));
       } catch (error: any) {
