@@ -29,7 +29,7 @@ export const ButtonsPanel = (props: IButtonsPanelProps) => {
                   })}
                   type={col !== EnumButton.EQUALS ? 'default' : 'primary'}
                 >
-                  {col === EnumButton.BACKSPACE ? '⌫' : col === EnumButton.MULTIPLY ? '×' : col}
+                  {col}
                 </Button>
               </td>
             ))}
