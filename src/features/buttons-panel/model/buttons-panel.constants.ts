@@ -1,5 +1,5 @@
 export enum EnumButton {
-  BACKSPACE = '⌫',
+  BACKSPACE = 'Backspace',
   CLEAR = 'C',
   SQUARE_ROOT = '√',
   PERCENT = '%',
@@ -7,7 +7,7 @@ export enum EnumButton {
   SEVEN = '7',
   EIGHT = '8',
   NINE = '9',
-  MULTIPLY = '×',
+  MULTIPLY = '*',
   FOUR = '4',
   FIVE = '5',
   SIX = '6',
@@ -19,6 +19,7 @@ export enum EnumButton {
   ZERO = '0',
   COUPLE_ZERO = '00',
   DECIMAL = ',',
+  DECIMAL_CLONE = '.',
   EQUALS = '=',
 }
 

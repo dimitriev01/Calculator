@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import { EnumButton } from 'features/buttons-panel';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useCalculation = () => {
   const [expression, setExpression] = useState<string>('');
@@ -53,7 +53,7 @@ export const useCalculation = () => {
 
       if (token in precedence) {
         while (operators.length > 0 && precedence[operators[operators.length - 1]] >= precedence[token]) {
-          const operator = operators.pop() ?? '';
+          const operator = operators.pop();
           const operand2 = parseFloat(stack.pop() as string);
           const operand1 = parseFloat(stack.pop() as string);
           stack.push(performOperation(operator, operand1, operand2));
@@ -67,7 +67,7 @@ export const useCalculation = () => {
     }
 
     while (operators.length > 0) {
-      const operator = operators.pop() ?? '';
+      const operator = operators.pop();
       const operand2 = parseFloat(stack.pop() as string);
       const operand1 = parseFloat(stack.pop() as string);
       stack.push(performOperation(operator, operand1, operand2));
@@ -100,6 +100,45 @@ export const useCalculation = () => {
       setExpression(expression + value);
     }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const key = event.key;
+
+      if (key === 'Enter') {
+        calculateResult();
+      } else if (key === 'Backspace') {
+        setExpression(expression.slice(0, -1));
+      } else if (!isNaN(parseInt(key)) || key === EnumButton.DECIMAL_CLONE || key === EnumButton.DECIMAL) {
+        setExpression(expression + key);
+      } else if (key in EnumButton) {
+        handleButton(EnumButton[key as keyof typeof EnumButton]);
+      } else {
+        switch (key) {
+          case EnumButton.MULTIPLY:
+            handleButton(EnumButton.MULTIPLY);
+            break;
+          case EnumButton.DIVIDE:
+            handleButton(EnumButton.DIVIDE);
+            break;
+          case EnumButton.ADD:
+            handleButton(EnumButton.ADD);
+            break;
+          case EnumButton.SUBTRACT:
+            handleButton(EnumButton.SUBTRACT);
+            break;
+          default:
+            break;
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [expression]);
 
   return {
     result,
