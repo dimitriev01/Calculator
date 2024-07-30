@@ -1,7 +1,11 @@
-import { useCalculation } from 'shared/lib/hooks';
+import { IResultPanelProps } from '../model/result-panel.types';
 import cls from './result-panel.module.scss';
 
-export const ResultPanel = () => {
-  const { result } = useCalculation();
-  return <div className={cls['result-panel']}>{result}</div>;
+export const ResultPanel = (props: IResultPanelProps) => {
+  const { result } = props;
+  return (
+    <div className={cls['result-panel']}>
+      <span>{result}</span>
+    </div>
+  );
 };

@@ -1,12 +1,12 @@
 import { Button } from 'antd';
 import clsx from 'clsx';
-import { calcButtons } from '../model/buttons-panel.constants';
+import { calcButtons, EnumButton } from '../model/buttons-panel.constants';
 import { MouseEvent } from 'react';
-import { useCalculation } from 'shared/lib/hooks';
 import cls from './buttons-panel.module.scss';
+import { IButtonsPanelProps } from '../model/buttons-panel.types';
 
-export const ButtonsPanel = () => {
-  const { handleButton } = useCalculation();
+export const ButtonsPanel = (props: IButtonsPanelProps) => {
+  const { handleButton } = props;
 
   const onClickButtonHandler = (e: MouseEvent<HTMLButtonElement>) => {
     const buttonText = e.currentTarget.textContent;
@@ -25,9 +25,9 @@ export const ButtonsPanel = () => {
                 <Button
                   onClick={onClickButtonHandler}
                   className={clsx(cls['buttons-panel__button'], {
-                    [cls['buttons-panel__button_primary']]: col === '=',
+                    [cls['buttons-panel__button_primary']]: col === EnumButton.EQUALS,
                   })}
-                  type={col !== '=' ? 'default' : 'primary'}
+                  type={col !== EnumButton.EQUALS ? 'default' : 'primary'}
                 >
                   {col}
                 </Button>
